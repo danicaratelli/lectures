@@ -1,0 +1,37 @@
+## Packages used
+using Dierckx, FredData, Dates, DataFrames
+
+##Optionsf
+FRED_API_key = "4f9f790c74d8b1e1f808400bc343fbe3"; #St. Louis Fed Alfred jey
+
+start_date = "2000-01-01";
+
+date1 = "2017-06-01"; date1 = Date(date1);
+date2 = "2017-06-08"; date2 = Date(date2);
+date3 = "2017-06-15"; date3 = Date(date3);
+date4 = "2017-06-22"; date4 = Date(date4);
+
+type Data
+    dates::Array{Date,1};
+    Data:: Array{Float64,2};
+    quarts:: Array{Int64,1};
+end
+
+
+##Setting prerequisites
+
+#useful functions
+include("data_construct.jl");
+include("menmonics.jl");
+include("transformation.jl");
+include("series.jl");
+
+#Fred pulling
+f = Fred();
+
+Nseries = length(Mnems);
+#data 1
+data1 = data_construct(Mnems,Transformation,start_date,date1,Nseries);
+data2 = data_construct(Mnems,Transformation,start_date,date2,Nseries);
+data3 = data_construct(Mnems,Transformation,start_date,date3,Nseries);
+data4 = data_construct(Mnems,Transformation,start_date,date4,Nseries);

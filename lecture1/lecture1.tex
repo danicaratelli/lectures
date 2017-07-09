@@ -1,0 +1,103 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}	% Para caracteres en español
+\usepackage{amsmath,amsthm,amsfonts,amssymb,amscd}
+\usepackage{multirow,booktabs}
+\usepackage[table]{xcolor}
+\usepackage{fullpage}
+\usepackage{lastpage}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{mathrsfs}
+\usepackage{wrapfig}
+\usepackage{setspace}
+\usepackage{calc}
+\usepackage{multicol}
+\usepackage{cancel}
+\usepackage[margin=3cm]{geometry}
+\usepackage{amsmath}
+\newlength{\tabcont}
+\setlength{\parindent}{0.0in}
+\setlength{\parskip}{0.05in}
+\usepackage{empheq}
+\usepackage{framed}
+\usepackage{xcolor}
+\colorlet{shadecolor}{orange!15}
+\parindent 0in
+\parskip 12pt
+\geometry{margin=1in, headsep=0.25in}
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}
+\newtheorem{reg}{Rule}
+\newtheorem{exer}{Exercise}
+\newtheorem{note}{Note}
+\begin{document}
+\setcounter{section}{0}
+\title{Review Notes}
+
+\thispagestyle{empty}
+
+\begin{center}
+{\LARGE \bf Summer Intern Lectures}\\
+{\large Time Series Analysis Team}\\
+June 2017
+\end{center}
+\section{State Space Models}
+\subsection{What is a state space model?}
+A state space model is a way to represent the dynamics of a set of variables. A models for observable variables $y_{i,t}$ can be thus described by a model of (possibly unobserved) $x_{i,t}$, i.e. the state variables. Any state space model can be rewritten as a system of an \textbf{observation equations}, relating the state space to the observation space, and a \textit{transformation equation}, describing the dynamics of the state space.
+
+
+In its simplest form, a state space model can be characterized by the following system:
+
+\begin{alignat}{2}
+  y_{t} = G \cdot x_{t} \hspace*{5em} \text{observation equation} \\
+  x_{t+1} = A\cdot x_{t} + C\cdot w_{t+1}, w_{t+1}\sim \mathcal{N}(0,I)  \hspace*{5em} \text{transition equation}
+\end{alignat}
+
+Note 1: this can be a higher-dimensional model as well, just make $y_{t}$ a $k\times 1$ vector and $x_{t}$ a $n\times 1$ vector. 
+
+Then what do we have:
+
+\begin{itemize}
+\item $G$ is a $k\times n$ matrix known as the \textbf{output} matrix, relating state model to observable model.
+\item $A$ is a $n\times n$ matrix known as the \textbf{transition} matrix, indicating the evolution of the state variable(s).
+\item $C$ is a $\times m$ matrix known as the \textbf{volatility} matrix, indicating how uncertainty enters the model.
+\item $w_{t+t1}$ is an $m\times 1$ vector of randomness.
+
+Note 2: The state and observation models can have different dimensions! This will be very useful for \textit{Nowcasting} framework.
+
+\end{itemize}
+
+\begin{shaded}
+\textbf{Example 1} \newline
+The model for the variable $y_{t}$ is:
+
+\begin{equation} y_{t+1} = \phi_{0} + \phi_{1} y_{t} + \phi_{2} y_{t-1} 
+\end{equation}
+
+ given $y_{0},y_{-1}$. How do you convert this into a state space model?
+
+Look at what variables enter the model. It's a constant term as well as $y_{y}$ and $y_{t-1}$.
+$$x_{t}:= [1\;\; y_{t}\;\; y_{t-1}]'.$$
+Recall that the observation equation will be of the form $y_{t} = G x_{t}$. Given our state vector $x_{t}$ what is $G$? \newline
+
+$G = [0\;\; 1\;\; 0]$ works! $$G\cdot x_{t} = \begin{pmatrix} 0 & 1 & 0 \end{pmatrix} \cdot \begin{pmatrix} 1\\ y_{t}\\ y_{t-1} \end{pmatrix} = y_{t}.$$
+
+What are the dynamics of the state variable? We want to be able to reproduce the initial model (3) by relating $x_{t+1}$ and $x_{t}$ as in the transition equation: $x_{t+1} = Ax_{t} + C w_{t+1}$. What are $A$ and $C$?
+
+$$x_{t+1} = \begin{pmatrix} 1\\ y_{t+1}\\ y_{t}\end{pmatrix} = A \begin{pmatrix} 1\\ y_{t}\\ y_{t-1} \end{pmatrix}$$
+
+Solve analytically here, or just eye-ball it! $A=\begin{pmatrix} 1 & 0 & 0\\
+\phi_{1} & \phi_{2} & \phi_{3}\\ 0 & 1 & 0 \end{pmatrix}$ works!
+
+Finally, what is $C$? There is no randomness, so it $C=\vec{0}$.
+
+\end{shaded}
+
+
+For you to do:
+\begin{itemize}
+  \item[1)] $y_{t+1} = \phi_{1} y_{t} + \phi_{2} y_{t-1} + \phi_{3} y_{t-2} + \phi_{4} y_{t-3} + \sigma w_{t+1}$ with $w_{t} \sim \mathcal{N}(0,1)$.
+  \item[2)] As above but $y_{t}$ is a $k\times 1$ vector (i.e. it represents $k$ many variables at time $t$). $\phi_{j}$ is $k\times k$ matrix and $w_{t}$ is $k\times 1$ vector. This is then a vector auto regression!
+\end{itemize}
+
+\end{document}
