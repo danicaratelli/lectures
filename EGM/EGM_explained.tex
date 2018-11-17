@@ -1,0 +1,103 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}	% Para caracteres en español
+\usepackage{amsmath,amsthm,amsfonts,amssymb,amscd}
+\usepackage{multirow,booktabs}
+\usepackage[table]{xcolor}
+\usepackage{fullpage}
+\usepackage{lastpage}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{mathrsfs}
+\usepackage{wrapfig}
+\usepackage{setspace}
+\usepackage{calc}
+\usepackage{bm}
+\usepackage{multicol}
+\usepackage{cancel}
+\usepackage[margin=3cm]{geometry}
+\usepackage{amsmath}
+\newlength{\tabcont}
+\setlength{\parindent}{0.0in}
+\setlength{\parskip}{0.05in}
+\usepackage{empheq}
+\usepackage{framed}
+\usepackage{xcolor}
+\colorlet{shadecolor}{orange!15}
+\parindent 0in
+\parskip 12pt
+\geometry{margin=1in, headsep=0.25in}
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}
+\newtheorem{reg}{Rule}
+\newtheorem{exer}{Exercise}
+\newtheorem{note}{Note}
+\begin{document}
+\setcounter{section}{0}
+\title{Review Notes}
+
+\thispagestyle{empty}
+
+\begin{center}
+{\LARGE \bf Summer Intern Lectures}\\
+{\large Time Series Analysis Team}\\
+June 2017
+\end{center}
+\section{Endogenous Grid Method}
+These notes are an adaptation of Josep Pijoan-Mas' notes with a few steps explained more in detail as well as the addition of some Julia code.
+
+\subsection{Simple consumption/savings model}
+Consider the dynamic programming problem
+\begin{center}
+	$v(a,y)= \underset{a',n}{\max\;}\left\{u(c,n) + \beta E_{y}\left[v(a',y')\right] \right\}$\\
+	s.t. $a'+c\leq aR + nyw$,\\
+	$a'\geq -b$, $c\geq 0$.
+\end{center}
+where the income process is a Markov chain, i.e. $y'$ only depends on $y$ and some stochastic factor. Substituting the (binding) budget constraint, gives us the FOCs are:
+\begin{itemize}
+	\item[$a')$] $$-u_{1}(c,n)+\beta E_{y}\left[v_{1}(a',n')\right]=0$$
+	\item[$n)$] $$u_{1}(c,n)yw + u_{2}(c,n)=0$$
+\end{itemize}
+and the Envelope condition is:
+\begin{itemize}
+	\item[$a)$]$$v_{1}(a,y)=u_{1}(c,n)R.$$
+\end{itemize}
+
+Including the Envelope condition in the first FOC and assuming we can isolate $n$ from the second FOC gives us:
+\begin{eqnarray}
+u_{1}(c,n)=\beta R E_{y}\left[u_{1}(c',n')\right]\\
+n = n(c,y)
+\end{eqnarray}
+
+\subsection{Euler Equation Iteration}
+Here follow the steps for the Euler Equation iteration.
+\begin{enumerate}
+	\item Guess a policy function for consumption $\bm{c=g_{0}^{c}(a,y)}$. This will be updated and will determine our convergence.
+	\item Substitute this rule on the right-hand side of (1) and get:
+	$$u_{1}(c)=\beta R E_{y}\left[u_{1}(g_{0}^{c}(a',y'),n')\right],$$
+	Assuming $u_{1}(\cdot)$ is invertible, invert the equation just derived in order to get consumption:
+	$$c = u_{1}^{-1}\left( \beta R E_{y}\left[u_{1}(g_{0}^{c}(a',y'),n')\right] \right)=:\tilde{g}_{0}^{c}(a',y)$$
+	Notice that $\tilde{g}_{0}^{c}(\cdot)$ depends on $a'$ because, in the above expression those are known at at $0$ and it depends on $y$ because the expectation is taken over income and next period income only depends on current income.\\
+	This formulation tells us that consumption today is a function of assets tomorrow and income today. So, knowing $y$ and $a'$, we can pin down $c$.
+	\item If the asset grid is $A =\{a_{1},\dots a_{m}\}$ and the income process is discrete, i.e. $Y=\{y_{1},\dots,y_{n}\}$ and Markovian (as we are assuming) with transition matrix $\Gamma$, we can write
+	$$c =\tilde{g}_{0}^{c}(a_{i},y_{j})= u_{1}^{-1}\left( \beta R \sum_{l} \Gamma_{j,l} u_{1}(g_{0}^{c}(a_{i},y_{l}),n')\right)$$
+	Notice further that $A$ is the asset grid for tomorrow's assets.\\
+	
+	Next, using the (binding) budget constraint we can deduce current assets given tomorrow's assets and current income, namely
+	\begin{align*}
+	a_{i} + c &= a_{i,j} R + ny_{j}w\\
+	\Rightarrow a_{i,j}^{\ast}&=\frac{a_{i}+c-ny_{i}w}{R}
+	\end{align*}
+	If hours worked were exogenous we would be done, however, we can, making some separability assumptions, say as before that $n=n(c,y_{j})=n(g_{c}^{0}(a_{i},y_{j}),y_{j})$ and so
+	\begin{equation}
+	a_{i,j}^{\ast}&=\frac{a_{i}+c-ny_{i}w}{R}
+	\end{equation}
+\end{enumerate}
+
+
+\section{Julia example}
+\begin{shaded}
+Here is the example...
+\end{shaded}
+
+
+\end{document}
