@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840) (preloaded format=pdflatex 2018.8.18)  16 NOV 2018 19:53
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840) (preloaded format=pdflatex 2018.8.18)  16 NOV 2018 20:09
 entering extended mode
 **./EGM_explained.tex
 (EGM_explained.tex
@@ -485,27 +485,17 @@ Underfull \hbox (badness 10000) in paragraph at lines 82--84
 
  []
 
-! Misplaced alignment tab character &.
-l.92 	a_{i,j}^{\ast}&
-                     =\frac{a_{i}+c-ny_{i}w}{R}
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-
+[2] 
 AED: lastpage setting LastPage
-[2] (EGM_explained.aux) ) 
+[3] (EGM_explained.aux) ) 
 Here is how much of TeX's memory you used:
  4800 strings out of 494891
  67194 string characters out of 3178673
- 151119 words of memory out of 3000000
+ 155119 words of memory out of 3000000
  8323 multiletter control sequences out of 15000+200000
  13368 words of font info for 50 fonts, out of 3000000 for 9000
  0 hyphenation exceptions out of 8191
- 41i,9n,43p,261b,222s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 41i,10n,43p,363b,247s stack positions out of 5000i,500n,10000p,200000b,50000s
 </home/david/.miktex/texmfs/install/fonts/type1/public
 /amsfonts/cm/cmbx10.pfb></home/david/.miktex/texmfs/install/fonts/type1/public/
 amsfonts/cm/cmbx12.pfb></home/david/.miktex/texmfs/install/fonts/type1/public/a
@@ -521,9 +511,9 @@ s/cm/cmr8.pfb></home/david/.miktex/texmfs/install/fonts/type1/public/amsfonts/c
 m/cmsy10.pfb></home/david/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm
 /cmsy6.pfb></home/david/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/c
 msy8.pfb>
-Output written on EGM_explained.pdf (2 pages, 144113 bytes).
+Output written on EGM_explained.pdf (3 pages, 148937 bytes).
 PDF statistics:
- 65 PDF objects out of 1000 (max. 8388607)
+ 68 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
