@@ -38,9 +38,7 @@
 \thispagestyle{empty}
 
 \begin{center}
-{\LARGE \bf Summer Intern Lectures}\\
-{\large Time Series Analysis Team}\\
-June 2017
+November 2018
 \end{center}
 \section{Endogenous Grid Method}
 These notes are an adaptation of Josep Pijoan-Mas' notes with a few steps explained more in detail as well as the addition of some Julia code.
@@ -85,16 +83,16 @@ Here follow the steps for the Euler Equation iteration.
 	Next, using the (binding) budget constraint we can deduce current assets given tomorrow's assets and current income, namely
 	\begin{align*}
 	a_{i} + c &= a_{i,j} R + ny_{j}w\\
-	\Rightarrow a_{i,j}^{\ast}&=\frac{a_{i}+c-ny_{i}w}{R}
+	\Rightarrow a_{i,j}^{\ast}&=\frac{a_{i}+c-ny_{j}w}{R}
 	\end{align*}
 	If hours worked were exogenous we would be done, however, we can, making some separability assumptions, say as before that $n=n(c,y_{j})=n(\tilde{g}_{c}^{0}(a_{i},y_{j}),y_{j})=:\tilde{g}_{0}^{n}(a_{i},y_{j})$ and so
 	\begin{equation}
-	a_{i,j}^{\ast}=\frac{a_{i}+\tilde{g}_{c}^{0}(a_{i},y_{j})-\tilde{g}_{0}^{n}(a_{i},y_{j})y_{i}w}{R}
+	a_{i,j}^{\ast}=\frac{a_{i}+\tilde{g}_{c}^{0}(a_{i},y_{j})-\tilde{g}_{0}^{n}(a_{i},y_{j})y_{j}w}{R}
 	\end{equation}
 	Eq. (3) gives us a set of new asset grids $A^{\ast}_{j}=\{a_{1,j}^{\ast},\dots a_{n,j}^{\ast}\}$, one for each possible income state. Furthermore, we have consumption at each one of these asset positions, or in other words, the new policy function for the new asset grid is $g_{c}^{1}(a_{i,j}^{\ast},y_{j})=\tilde{g}_{c}^{0}(a_{i},y_{j})$.
 	\item  Next we need to map the new policy function, defined on the grid $A_{j}^{\ast}$, onto the old asset grid $A$, i.e. we need to find $g_{c}^{1}(a_{i},y_{j})$. We do so as follows:
 	\begin{enumerate}
-		\item If $a_{i}\leq a_{i,j}^{\ast}$ then assets next period are very low which means that this period the agent will be at the borrowing constraint, i.e. $a_{i}=a_{1}$ and so, from the budget constraint we get:
+		\item If $a_{i}\leq a_{1,j}^{\ast}$ then assets next period are very low which means that this period the agent will be at the borrowing constraint, i.e. $a_{i}=a_{1}$ and so, from the budget constraint we get:
 		$$g_{1}^{c}(a_{i},y_{j})=a_{i}R+ny_{j}w-a_{1}=a_{i}R+g_{1}^{n}(a_{i},y_{j})y_{j}w-a_{1}.$$
 		\item If $a_{i}>a_{1,j}^{\ast}$ on the other hand $a_{i}$ must lie within some $\left[a_{k,j}^{\ast},a_{k+1,j}^{\ast}\right]$ interval. Simply interpolate $g_{1}^{c}(a_{i,j},y_{j})$ from $g_{1}^{c}(a_{k,j},y_{j})$ and $g_{1}^{c}(a_{k+1,j},y_{j})$.
 	\end{enumerate}

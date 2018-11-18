@@ -1,11 +1,11 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840) (preloaded format=pdflatex 2018.8.18)  16 NOV 2018 20:09
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6745 64-bit) (preloaded format=pdflatex 2018.8.18)  17 NOV 2018 17:23
 entering extended mode
 **./EGM_explained.tex
 (EGM_explained.tex
 LaTeX2e <2018-04-01> patch level 5
-(/home/david/.miktex/texmfs/install/tex/latex/base/article.cls
+("C:\Users\danic\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\article.cls"
 Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
-(/home/david/.miktex/texmfs/install/tex/latex/base/size11.clo
+("C:\Users\danic\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\size11.clo"
 File: size11.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
 )
 \c@part=\count80
@@ -19,30 +19,36 @@ File: size11.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
 \abovecaptionskip=\skip41
 \belowcaptionskip=\skip42
 \bibindent=\dimen102
-)
-(/home/david/.miktex/texmfs/install/tex/latex/base/inputenc.sty
+) ("C:\Users\danic\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\inputenc.st
+y"
 Package: inputenc 2018/04/06 v1.3b Input encoding file
 \inpenc@prehook=\toks14
 \inpenc@posthook=\toks15
 )
-(/home/david/.miktex/texmfs/install/tex/latex/amsmath/amsmath.sty
+("C:\Users\danic\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsmath\amsmath.st
+y"
 Package: amsmath 2017/09/02 v2.17a AMS math features
 \@mathmargin=\skip43
 
 For additional information on amsmath, use the `?' option.
-(/home/david/.miktex/texmfs/install/tex/latex/amsmath/amstext.sty
+
+("C:\Users\danic\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsmath\amstext.st
+y"
 Package: amstext 2000/06/29 v2.01 AMS text
 
-(/home/david/.miktex/texmfs/install/tex/latex/amsmath/amsgen.sty
+("C:\Users\danic\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsmath\amsgen.sty
+"
 File: amsgen.sty 1999/11/30 v2.0 generic functions
 \@emptytoks=\toks16
 \ex@=\dimen103
 ))
-(/home/david/.miktex/texmfs/install/tex/latex/amsmath/amsbsy.sty
+("C:\Users\danic\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsmath\amsbsy.sty
+"
 Package: amsbsy 1999/11/29 v1.2d Bold Symbols
 \pmbraise@=\dimen104
 )
-(/home/david/.miktex/texmfs/install/tex/latex/amsmath/amsopn.sty
+("C:\Users\danic\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsmath\amsopn.sty
+"
 Package: amsopn 2016/03/08 v2.02 operator names
 )
 \inf@bad=\count88
@@ -83,7 +89,7 @@ LaTeX Font Info:    Redeclaring font encoding OMS on input line 713.
 LaTeX Info: Redefining \[ on input line 2817.
 LaTeX Info: Redefining \] on input line 2818.
 )
-(/home/david/.miktex/texmfs/install/tex/latex/amscls/amsthm.sty
+("C:\Users\danic\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amscls\amsthm.sty"
 Package: amsthm 2017/10/31 v2.20.4
 \thm@style=\toks21
 \thm@bodyfont=\toks22
@@ -95,31 +101,35 @@ Package: amsthm 2017/10/31 v2.20.4
 \thm@headsep=\skip48
 \dth@everypar=\toks26
 )
-(/home/david/.miktex/texmfs/install/tex/latex/amsfonts/amsfonts.sty
+("C:\Users\danic\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsfonts\amsfonts.
+sty"
 Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
 \symAMSa=\mathgroup4
 \symAMSb=\mathgroup5
 LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
 )
-(/home/david/.miktex/texmfs/install/tex/latex/amsfonts/amssymb.sty
+("C:\Users\danic\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsfonts\amssymb.s
+ty"
 Package: amssymb 2013/01/14 v3.01 AMS font symbols
 )
-(/home/david/.miktex/texmfs/install/tex/latex/amsmath/amscd.sty
+("C:\Users\danic\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsmath\amscd.sty"
 Package: amscd 2017/04/14 v2.1 AMS Commutative Diagrams
 \athelp@=\toks27
 \minaw@=\dimen112
 \bigaw@=\dimen113
 \minCDarrowwidth=\dimen114
 )
-(/home/david/.miktex/texmfs/install/tex/latex/multirow/multirow.sty
+("C:\Users\danic\AppData\Local\Programs\MiKTeX 2.9\tex\latex\multirow\multirow.
+sty"
 Package: multirow 2018/08/03 v2.3 Span multiple rows of a table
 \multirow@colwidth=\skip49
 \multirow@cntb=\count100
 \multirow@dima=\skip50
 \bigstrutjot=\dimen115
 )
-(/home/david/.miktex/texmfs/install/tex/latex/booktabs/booktabs.sty
+("C:\Users\danic\AppData\Local\Programs\MiKTeX 2.9\tex\latex\booktabs\booktabs.
+sty"
 Package: booktabs 2005/04/14 v1.61803 publication quality tables
 \heavyrulewidth=\dimen116
 \lightrulewidth=\dimen117
@@ -139,21 +149,24 @@ Package: booktabs 2005/04/14 v1.61803 publication quality tables
 \@lastruleclass=\count104
 \@thisrulewidth=\dimen128
 )
-(/home/david/.miktex/texmfs/install/tex/latex/xcolor/xcolor.sty
+("C:\Users\danic\AppData\Local\Programs\MiKTeX 2.9\tex\latex\xcolor\xcolor.sty"
 Package: xcolor 2016/05/11 v2.12 LaTeX color extensions (UK)
 
-(/home/david/.miktex/texmfs/install/tex/latex/graphics-cfg/color.cfg
+("C:\Users\danic\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics-cfg\color
+.cfg"
 File: color.cfg 2016/01/02 v1.6 sample color configuration
 )
 Package xcolor Info: Driver file: pdftex.def on input line 225.
 
-(/home/david/.miktex/texmfs/install/tex/latex/graphics-def/pdftex.def
+("C:\Users\danic\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics-def\pdfte
+x.def"
 File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
 )
-(/home/david/.miktex/texmfs/install/tex/latex/colortbl/colortbl.sty
+("C:\Users\danic\AppData\Local\Programs\MiKTeX 2.9\tex\latex\colortbl\colortbl.
+sty"
 Package: colortbl 2018/05/02 v1.0c Color table columns (DPC)
 
-(/home/david/.miktex/texmfs/install/tex/latex/tools/array.sty
+("C:\Users\danic\AppData\Local\Programs\MiKTeX 2.9\tex\latex\tools\array.sty"
 Package: array 2018/04/30 v2.4h Tabular extension package (FMi)
 \col@sep=\dimen129
 \ar@mcellbox=\box28
@@ -177,14 +190,17 @@ Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1369.
 Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
 Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
 )
-(/home/david/.miktex/texmfs/install/tex/latex/preprint/fullpage.sty
+("C:\Users\danic\AppData\Local\Programs\MiKTeX 2.9\tex\latex\preprint\fullpage.
+sty"
 Package: fullpage 1999/02/23 1.1 (PWD)
 \FP@margin=\skip54
 )
-(/home/david/.miktex/texmfs/install/tex/latex/lastpage/lastpage.sty
+("C:\Users\danic\AppData\Local\Programs\MiKTeX 2.9\tex\latex\lastpage\lastpage.
+sty"
 Package: lastpage 2015/03/29 v1.2m Refers to last page's name (HMM; JPG)
 )
-(/home/david/.miktex/texmfs/install/tex/latex/enumitem/enumitem.sty
+("C:\Users\danic\AppData\Local\Programs\MiKTeX 2.9\tex\latex\enumitem\enumitem.
+sty"
 Package: enumitem 2011/09/28 v3.5.2 Customized lists
 \enitkv@toks@=\toks30
 \labelindent=\skip55
@@ -193,7 +209,8 @@ Package: enumitem 2011/09/28 v3.5.2 Customized lists
 \enit@inbox=\box30
 \enitdp@description=\count106
 )
-(/home/david/.miktex/texmfs/install/tex/latex/fancyhdr/fancyhdr.sty
+("C:\Users\danic\AppData\Local\Programs\MiKTeX 2.9\tex\latex\fancyhdr\fancyhdr.
+sty"
 Package: fancyhdr 2017/06/30 v3.9a Extensive control of page headers and footer
 s
 \f@nch@headwidth=\skip56
@@ -206,11 +223,13 @@ s
 \f@nch@O@olf=\skip63
 \f@nch@O@orf=\skip64
 )
-(/home/david/.miktex/texmfs/install/tex/latex/jknappen/mathrsfs.sty
+("C:\Users\danic\AppData\Local\Programs\MiKTeX 2.9\tex\latex\jknappen\mathrsfs.
+sty"
 Package: mathrsfs 1996/01/01 Math RSFS package v1.0 (jk)
 \symrsfs=\mathgroup6
 )
-(/home/david/.miktex/texmfs/install/tex/latex/wrapfig/wrapfig.sty
+("C:\Users\danic\AppData\Local\Programs\MiKTeX 2.9\tex\latex\wrapfig\wrapfig.st
+y"
 \wrapoverhang=\dimen132
 \WF@size=\dimen133
 \c@WF@wrappedlines=\count107
@@ -218,10 +237,11 @@ Package: mathrsfs 1996/01/01 Math RSFS package v1.0 (jk)
 \WF@everypar=\toks32
 Package: wrapfig 2003/01/31  v 3.6
 )
-(/home/david/.miktex/texmfs/install/tex/latex/setspace/setspace.sty
+("C:\Users\danic\AppData\Local\Programs\MiKTeX 2.9\tex\latex\setspace\setspace.
+sty"
 Package: setspace 2011/12/19 v6.7a set line spacing
 )
-(/home/david/.miktex/texmfs/install/tex/latex/tools/calc.sty
+("C:\Users\danic\AppData\Local\Programs\MiKTeX 2.9\tex\latex\tools\calc.sty"
 Package: calc 2017/05/25 v4.3 Infix arithmetic (KKT,FJ)
 \calc@Acount=\count108
 \calc@Bcount=\count109
@@ -234,7 +254,7 @@ LaTeX Info: Redefining \addtolength on input line 81.
 \calc@Ccount=\count110
 \calc@Cskip=\skip67
 )
-(/home/david/.miktex/texmfs/install/tex/latex/tools/bm.sty
+("C:\Users\danic\AppData\Local\Programs\MiKTeX 2.9\tex\latex\tools\bm.sty"
 Package: bm 2017/01/16 v1.2c Bold Symbol Support (DPC/FMi)
 \symboldoperators=\mathgroup7
 \symboldletters=\mathgroup8
@@ -242,7 +262,8 @@ Package: bm 2017/01/16 v1.2c Bold Symbol Support (DPC/FMi)
 LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 141.
 LaTeX Info: Redefining \bm on input line 207.
 )
-(/home/david/.miktex/texmfs/install/tex/latex/tools/multicol.sty
+("C:\Users\danic\AppData\Local\Programs\MiKTeX 2.9\tex\latex\tools\multicol.sty
+"
 Package: multicol 2018/04/20 v1.8s multicolumn formatting (FMi)
 \c@tracingmulticols=\count111
 \mult@box=\box32
@@ -291,24 +312,29 @@ Package: multicol 2018/04/20 v1.8s multicolumn formatting (FMi)
 \colbreak@box=\box57
 \mc@col@check@num=\count119
 )
-(/home/david/.miktex/texmfs/install/tex/latex/cancel/cancel.sty
+("C:\Users\danic\AppData\Local\Programs\MiKTeX 2.9\tex\latex\cancel\cancel.sty"
 Package: cancel 2013/04/12 v2.2 Cancel math terms
 )
-(/home/david/.miktex/texmfs/install/tex/latex/geometry/geometry.sty
+("C:\Users\danic\AppData\Local\Programs\MiKTeX 2.9\tex\latex\geometry\geometry.
+sty"
 Package: geometry 2018/04/16 v5.8 Page Geometry
 
-(/home/david/.miktex/texmfs/install/tex/latex/graphics/keyval.sty
+("C:\Users\danic\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\keyval.st
+y"
 Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
 \KV@toks@=\toks33
 )
-(/home/david/.miktex/texmfs/install/tex/generic/oberdiek/ifpdf.sty
+("C:\Users\danic\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\ifpdf.s
+ty"
 Package: ifpdf 2017/03/15 v3.2 Provides the ifpdf switch
 )
-(/home/david/.miktex/texmfs/install/tex/generic/oberdiek/ifvtex.sty
+("C:\Users\danic\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\ifvtex.
+sty"
 Package: ifvtex 2016/05/16 v1.6 Detect VTeX and its facilities (HO)
 Package ifvtex Info: VTeX not detected.
 )
-(/home/david/.miktex/texmfs/install/tex/generic/ifxetex/ifxetex.sty
+("C:\Users\danic\AppData\Local\Programs\MiKTeX 2.9\tex\generic\ifxetex\ifxetex.
+sty"
 Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 )
 \Gm@cnth=\count120
@@ -324,16 +350,20 @@ Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 \Gm@layoutvoffset=\dimen152
 \Gm@dimlist=\toks34
 
-(/home/david/.miktex/texmfs/install/tex/latex/geometry/geometry.cfg))
+("C:\Users\danic\AppData\Local\Programs\MiKTeX 2.9\tex\latex\geometry\geometry.
+cfg"))
 \tabcont=\skip70
 
-(/home/david/.miktex/texmfs/install/tex/latex/mathtools/empheq.sty
+("C:\Users\danic\AppData\Local\Programs\MiKTeX 2.9\tex\latex\mathtools\empheq.s
+ty"
 Package: empheq 2017/03/31 v2.15 Emphasizing equations
 
-(/home/david/.miktex/texmfs/install/tex/latex/mathtools/mhsetup.sty
+("C:\Users\danic\AppData\Local\Programs\MiKTeX 2.9\tex\latex\mathtools\mhsetup.
+sty"
 Package: mhsetup 2017/03/31 v1.3 programming setup (MH)
 )
-(/home/david/.miktex/texmfs/install/tex/latex/mathtools/mathtools.sty
+("C:\Users\danic\AppData\Local\Programs\MiKTeX 2.9\tex\latex\mathtools\mathtool
+s.sty"
 Package: mathtools 2018/01/08 v1.21 mathematical typesetting tools
 LaTeX Info: Thecontrolsequence`\('isalreadyrobust on input line 129.
 LaTeX Info: Thecontrolsequence`\)'isalreadyrobust on input line 129.
@@ -365,7 +395,7 @@ LaTeX Info: Thecontrolsequence`\]'isalreadyrobust on input line 129.
 \EQ_tag_box=\box59
 \g_EQ_temprow_int=\count127
 )
-(/home/david/.miktex/texmfs/install/tex/latex/framed/framed.sty
+("C:\Users\danic\AppData\Local\Programs\MiKTeX 2.9\tex\latex\framed\framed.sty"
 Package: framed 2011/10/22 v 0.96: framed or shaded text with page breaks
 \OuterFrameSep=\skip72
 \fb@frw=\dimen169
@@ -377,8 +407,7 @@ Package: framed 2011/10/22 v 0.96: framed or shaded text with page breaks
 \c@reg=\count129
 \c@exer=\count130
 \c@note=\count131
-
-(EGM_explained.aux)
+ (EGM_explained.aux)
 \openout1 = `EGM_explained.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 34.
@@ -394,7 +423,8 @@ LaTeX Font Info:    ... okay on input line 34.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 34.
 LaTeX Font Info:    ... okay on input line 34.
 
-(/home/david/.miktex/texmfs/install/tex/context/base/supp-pdf.mkii
+("C:\Users\danic\AppData\Local\Programs\MiKTeX 2.9\tex\context\base\supp-pdf.mk
+ii"
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count132
 \scratchdimen=\dimen173
@@ -446,16 +476,20 @@ Package lastpage Info: Please have a look at the pageslts package at
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-(/home/david/.miktex/texmfs/install/tex/latex/graphics/graphicx.sty
+
+("C:\Users\danic\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\graphicx.
+sty"
 Package: graphicx 2017/06/01 v1.1a Enhanced LaTeX Graphics (DPC,SPQR)
 
-(/home/david/.miktex/texmfs/install/tex/latex/graphics/graphics.sty
+("C:\Users\danic\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\graphics.
+sty"
 Package: graphics 2017/06/25 v1.2c Standard LaTeX Graphics (DPC,SPQR)
 
-(/home/david/.miktex/texmfs/install/tex/latex/graphics/trig.sty
+("C:\Users\danic\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\trig.sty"
 Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
 )
-(/home/david/.miktex/texmfs/install/tex/latex/graphics-cfg/graphics.cfg
+("C:\Users\danic\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics-cfg\graph
+ics.cfg"
 File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
 Package graphics Info: Driver file: pdftex.def on input line 99.
@@ -464,24 +498,22 @@ Package graphics Info: Driver file: pdftex.def on input line 99.
 \Gin@req@width=\dimen176
 )
 \Hy@linkcounter=\count138
-LaTeX Font Info:    Try loading font information for U+msa on input line 51.
+LaTeX Font Info:    Try loading font information for U+msa on input line 49.
 
-(/home/david/.miktex/texmfs/install/tex/latex/amsfonts/umsa.fd
+("C:\Users\danic\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 51.
-
-(/home/david/.miktex/texmfs/install/tex/latex/amsfonts/umsb.fd
+LaTeX Font Info:    Try loading font information for U+msb on input line 49.
+("C:\Users\danic\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Try loading font information for U+rsfs on input line 51.
-
-(/home/david/.miktex/texmfs/install/tex/latex/jknappen/ursfs.fd
+LaTeX Font Info:    Try loading font information for U+rsfs on input line 49.
+("C:\Users\danic\AppData\Local\Programs\MiKTeX 2.9\tex\latex\jknappen\ursfs.fd"
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 ) [1
 
-{/home/david/.miktex/texmfs/data/pdftex/config/pdftex.map}]
-Underfull \hbox (badness 10000) in paragraph at lines 82--84
+{C:/Users/danic/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
+Underfull \hbox (badness 10000) in paragraph at lines 80--82
 
  []
 
@@ -489,31 +521,32 @@ Underfull \hbox (badness 10000) in paragraph at lines 82--84
 AED: lastpage setting LastPage
 [3] (EGM_explained.aux) ) 
 Here is how much of TeX's memory you used:
- 4800 strings out of 494891
- 67194 string characters out of 3178673
- 155119 words of memory out of 3000000
- 8323 multiletter control sequences out of 15000+200000
- 13368 words of font info for 50 fonts, out of 3000000 for 9000
- 0 hyphenation exceptions out of 8191
+ 4797 strings out of 492973
+ 68910 string characters out of 3126692
+ 159856 words of memory out of 3000000
+ 8567 multiletter control sequences out of 15000+200000
+ 12762 words of font info for 48 fonts, out of 3000000 for 9000
+ 1141 hyphenation exceptions out of 8191
  41i,10n,43p,363b,247s stack positions out of 5000i,500n,10000p,200000b,50000s
-</home/david/.miktex/texmfs/install/fonts/type1/public
-/amsfonts/cm/cmbx10.pfb></home/david/.miktex/texmfs/install/fonts/type1/public/
-amsfonts/cm/cmbx12.pfb></home/david/.miktex/texmfs/install/fonts/type1/public/a
-msfonts/cm/cmbx8.pfb></home/david/.miktex/texmfs/install/fonts/type1/public/ams
-fonts/cm/cmex10.pfb></home/david/.miktex/texmfs/install/fonts/type1/public/amsf
-onts/cm/cmmi10.pfb></home/david/.miktex/texmfs/install/fonts/type1/public/amsfo
-nts/cm/cmmi8.pfb></home/david/.miktex/texmfs/install/fonts/type1/public/amsfont
-s/cm/cmmib10.pfb></home/david/.miktex/texmfs/install/fonts/type1/public/amsfont
-s/cmextra/cmmib8.pfb></home/david/.miktex/texmfs/install/fonts/type1/public/ams
-fonts/cm/cmr10.pfb></home/david/.miktex/texmfs/install/fonts/type1/public/amsfo
-nts/cm/cmr12.pfb></home/david/.miktex/texmfs/install/fonts/type1/public/amsfont
-s/cm/cmr8.pfb></home/david/.miktex/texmfs/install/fonts/type1/public/amsfonts/c
-m/cmsy10.pfb></home/david/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm
-/cmsy6.pfb></home/david/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/c
-msy8.pfb>
-Output written on EGM_explained.pdf (3 pages, 148937 bytes).
+<C:/Users/danic/AppData/Local/Programs/MiKTeX 2.9/font
+s/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/danic/AppData/Local/Programs/Mi
+KTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/danic/AppData/Loca
+l/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx8.pfb><C:/Users/danic/
+AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:
+/Users/danic/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/c
+mmi10.pfb><C:/Users/danic/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/
+amsfonts/cm/cmmi8.pfb><C:/Users/danic/AppData/Local/Programs/MiKTeX 2.9/fonts/t
+ype1/public/amsfonts/cm/cmmib10.pfb><C:/Users/danic/AppData/Local/Programs/MiKT
+eX 2.9/fonts/type1/public/amsfonts/cmextra/cmmib8.pfb><C:/Users/danic/AppData/L
+ocal/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/dan
+ic/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C
+:/Users/danic/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/
+cmsy10.pfb><C:/Users/danic/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public
+/amsfonts/cm/cmsy6.pfb><C:/Users/danic/AppData/Local/Programs/MiKTeX 2.9/fonts/
+type1/public/amsfonts/cm/cmsy8.pfb>
+Output written on EGM_explained.pdf (3 pages, 138766 bytes).
 PDF statistics:
- 68 PDF objects out of 1000 (max. 8388607)
+ 64 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
