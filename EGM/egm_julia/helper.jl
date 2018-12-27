@@ -50,7 +50,8 @@ end
     Output: a:      new asset grid
             Indxs:  indexes where budget constraint does not bind
             W:      weights from interpolation
-blah blah
+Finds asset grid consistent with next period assets and current consumption for
+each (current) income state.
 """
 function interp(c::Array{Float64,2},agrid::Array{Float64,1},y::Array{Float64,1},r::Float64)
     m,N = size(c);
@@ -61,18 +62,17 @@ function interp(c::Array{Float64,2},agrid::Array{Float64,1},y::Array{Float64,1},
     for i=1:m
         LHS = c[i,:] + agrid;           #c + a
         RHS = (1+r)*agrid + y[i];   #(1+r)*a + y (cash on hand)
-        #finding first index where budget constraint holds, i.e. LHS <= RHS
         for j=1:N
             rhsj = RHS[j];
             j_index = findlast(LHS.<rhsj);
-            if j_index.==nothing
+            if j_index.==nothing #budget constraint does not hold, i.e. LHS > RHS
                 j_index = 1;
-            elseif j_index>1
+            elseif j_index>1     #budget constraint holds, i.e. LHS <= RHS
                 j_index-=1;
             end
             #linear interpolation
-            w = (LHS[j_index + 1] - rhsj) / (LHS[j_index + 1] - LHS[j_index]);  #weight on LHS[j_index]
-            a[i,j] = w*agrid[j_index] + (1 - w)*agrid[j_index+1];
+            w = (LHS[j_index + 1] - rhsj) / (LHS[j_index + 1] - LHS[j_index]);  #weight for linear interpolation
+            a[i,j] = w*agrid[j_index] + (1 - w)*agrid[j_index+1];   #interpolation of asset point
 
             W[i,j] = w;
             Indxs[j] = j_index;
