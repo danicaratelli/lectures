@@ -29,7 +29,7 @@ function tauchen_income(ρ::Float64,sig_y::Float64,m::Int,multi::Int=3)
     #computing stationary distribution
     tol = Inf;
     p = (1/m)*ones(1,m);
-    while tol>1e-5
+    while tol>1e-10
         p_new = p*Pi;
         tol = maximum(abs.(p_new-p));
         p = p_new
@@ -45,7 +45,7 @@ end
 """
     Input:  c:      consumption
             agrid:  asset grid
-            ygrid:  income grid
+            coh:    cash on hand
             r:      interest rate
     Output: a:      new asset grid
             Indxs:  indexes where budget constraint does not bind
@@ -53,7 +53,7 @@ end
 Finds asset grid consistent with next period assets and current consumption for
 each (current) income state.
 """
-function interp(c::Array{Float64,2},agrid::Array{Float64,1},y::Array{Float64,1},r::Float64)
+function interp(c::Array{Float64,2},agrid::Array{Float64,1},coh::Array{Float64,2},r::Float64)
     m,N = size(c);
 
     a = zeros(m,N);     #current assets
@@ -61,22 +61,51 @@ function interp(c::Array{Float64,2},agrid::Array{Float64,1},y::Array{Float64,1},
     Indxs = zeros(m,N); #first index where LHS<=RHS
     for i=1:m
         LHS = c[i,:] + agrid;           #c + a
-        RHS = (1+r)*agrid + y[i];   #(1+r)*a + y (cash on hand)
+        RHS = coh[i,:];   #(1+r)*a + y (cash on hand)
+        jindex = 1;
         for j=1:N
             rhsj = RHS[j];
-            j_index = findlast(LHS.<rhsj);
-            if j_index.==nothing #budget constraint does not hold, i.e. LHS > RHS
-                j_index = 1;
-            elseif j_index>1     #budget constraint holds, i.e. LHS <= RHS
-                j_index-=1;
+            #jindex first index where budget constraint holds
+            while jindex < N - 1
+                if LHS[jindex] >= rhsj
+                    break
+                end
+                jindex += 1
+            end
+            if jindex!==1
+                jindex_loc = jindex-1;
+            else
+                jindex_loc = 1;
             end
             #linear interpolation
-            w = (LHS[j_index + 1] - rhsj) / (LHS[j_index + 1] - LHS[j_index]);  #weight for linear interpolation
-            a[i,j] = w*agrid[j_index] + (1 - w)*agrid[j_index+1];   #interpolation of asset point
+            w = (LHS[jindex_loc + 1] - rhsj) / (LHS[jindex_loc + 1] - LHS[jindex_loc]);  #weight for linear interpolation
+            a[i,j] = w*agrid[jindex_loc] + (1 - w)*agrid[jindex_loc+1];   #interpolation of asset point
 
             W[i,j] = w;
-            Indxs[j] = j_index;
+            Indxs[j] = jindex_loc;
         end
     end
     return a, Indxs, W
+end
+
+
+################################################################################
+
+"""
+    Input:  agrid:  asset grid
+            coh:    cash on hand
+            c_pol:  consumption policy function
+            r:      interest rate
+            β:      discount factor
+            Pi:     transition matrix
+            σ:      constant of risk aversion
+    Output: a:      new asset grid
+Finds asset grid consistent with next period assets and current consumption for
+each (current) income state.
+"""
+function back_iterate(agrid::Array{Float64,1},coh::Array{Float64,2},c_pol::Array{Float64,2},r::Float64,β::Float64,Pi::Array{Float64,2},σ::Float64)
+    c = (β*(1+r)*Pi*((c_pol).^(-σ))).^(-1/σ);
+    a, Indxs, W = interp(c,agrid,coh,r);
+    a[a.<agrid[1]] = agrid[1];
+    return a;
 end
