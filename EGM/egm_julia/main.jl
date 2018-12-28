@@ -53,3 +53,8 @@ while tol>epsilon && it<max_iter
     a_pol_old = copy(a_pol);
     it+=1;
 end
+
+## Section 3 --- get policy rules (next period consumption & assets)
+c = (β*(1+r)*Pi*((c_pol).^(-σ))).^(-1/σ);
+a, Indxs, W = interp(c,agrid,coh,r);
+coh[Int.(Indxs)] =
