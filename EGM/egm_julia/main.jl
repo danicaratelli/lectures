@@ -1,60 +1,31 @@
 ## Packages
-using Distributions, PyPlot
+using PyPlot
 include("helper.jl");
 
 ## Parameters
-β = 0.92;       #discount factor
-σ = 1.0;          #risk aversion parameters
-sig_y = 0.92;      #income standard distribution
-amax = 10_000;  #maximal assets
-r = 0.02;       #interest rate
-N = 500;        #number of grid points
-m = 11;         #discretization of shock
-ρ = 0.9;       #autoregressive coefficient
+β = 0.96; #discount factor
+r = 0.02; #interest rate
+σ = 5;    #EIS
+N = 1000;
+par = params(β,r,σ,N);
+amin = 1e-6;
+amax = 100;
 
-u(c) = (c.^(1-σ))/(1-σ); #utility function CRRA
-uc(c) = c.^(-σ); #marginal utility of consumption
+#Income process
+y = [0.5;4;10];
+Π = [0.55 0.4 0.05;
+    0.3 0.5 0.2;
+    0.1 0.3 0.6];
 
-#constructing (next period) asset grid
-agrid = linspace(log(0.25),log(amax+0.25),N);
-agrid = exp.(agrid) - 0.25;
+#Utility
+u(x) = (x.^(1-σ))./(1-σ);   #u(⋅)
+u1(x) = x.^(-σ);            #u'(⋅)
+u1inv(x) = x.^(-1/σ);        #inv(u'(⋅))
+#Grid
+agrid = e.^(linspace(log(amin),log(amax),N));
 
-#discretizing income shock using tauchen.
-#Income process is as: log(y_t) = ρlog(y_t-1) + ε
-y, Pi, p = tauchen_income(ρ,sig_y,m);
-
-coh = repeat(y,1,N).+ (1+r)*repeat(agrid',m,1) #consumption today c(y,a)
-
-## Section 1 --- 1st iterations
-c_pol = coh .+ 0.02*repeat(agrid',m,1);   #guess consumption policy function
-c = (β*(1+r)*Pi*uc(c_pol)).^(-1/σ); #consumption today c(y,a') from Euler Equations
-
-#computing assets today (via interpolation)
-a, Indxs, W = interp(c,agrid,coh,r);
-a[a.<agrid[1]] = agrid[1];  #replacing where assets are too low
-#updating consumption policy function (using budget constraint)
-c_pol = coh .- a; #budget constraint is c_pol + a' = coh = (1+r)a + y
-
-## Section 2 --- iterate until convergence
-epsilon = 1e-6;     #tolerance criterion
-tol = Inf;          #current tolerance
-max_iter = 1_000;   #maximum number of iterations
-it = 1;             #iteration
-a_pol_old = copy(a);
-a_pol = copy(a_pol_old);
-while tol>epsilon && it<max_iter
-    if it % 10 == 0
-        println("Iteration # "*string(it)*"\n");
-        println("Tolerance: "*string(tol));
-    end
-    a_pol = back_iterate(agrid,coh,c_pol,r,β,Pi,σ);
-    c_pol = coh .- a_pol;
-    tol = maximum(abs.(a_pol.-a_pol_old));
-    a_pol_old = copy(a_pol);
-    it+=1;
-end
-
-## Section 3 --- get policy rules (next period consumption & assets)
-c = (β*(1+r)*Pi*((c_pol).^(-σ))).^(-1/σ);
-a, Indxs, W = interp(c,agrid,coh,r);
-coh[Int.(Indxs)] =
+#3.1
+#egm
+cpol, dif = egm(par,y,Π,agrid,u1,u1inv);
+plot_fig(agrid,cpol,"EGMpol.png")
+close()

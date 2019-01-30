@@ -1,111 +1,86 @@
-"""
-    Input:  ρ:          autoregressive coefficient of log-income
-            sig_y:      log-income standard deviation
-            m:          number by which to approximate with discrete distribution
-            multi:      number of stds for discrete support (default = 3)
-    Output: ygrid:    residual standard deviation
-            Pi:         transition matrix (Markov)
-            p:         stationary distribution
-Approximation of continuous log-income process with discrete process.
-Distributions is a required package
-"""
-function tauchen_income(ρ::Float64,sig_y::Float64,m::Int,multi::Int=3)
-    sig_eps = sig_y*sqrt(1-ρ^2);
-    dNorm = Normal(0,sig_eps);  #distribution of residuals
-    ygrid = linspace(-multi*sig_y,multi*sig_y,m);
-    d = diff(ygrid)[1]/2;
-
-    #computing transition matrix
-    Pi = zeros(m,m);
-    for j=2:m-1
-        eps1 = ygrid[1] .+d .-ρ*ygrid; #residuals going to j location
-        Pi[:,1] = cdf(dNorm,eps1);
-        epsj = ygrid[j] .-ρ*ygrid; #residuals going to j location
-        Pi[:,j] = cdf(dNorm,epsj.+d) - cdf(dNorm,epsj.-d);
-    end
-    epsm = ygrid[m] .-d .-ρ*ygrid; #residuals going to j location
-    Pi[:,m] = 1-cdf(dNorm,epsm);
-
-    #computing stationary distribution
-    tol = Inf;
-    p = (1/m)*ones(1,m);
-    while tol>1e-10
-        p_new = p*Pi;
-        tol = maximum(abs.(p_new-p));
-        p = p_new
-    end
-
-    #normalizing income to 1
-    y = exp.(ygrid)/(sum(p*exp.(ygrid)));
-    return y, Pi, p;
+struct params
+    β::Float64;  #discount factor
+    r::Float64;     #interest rate
+    σ::Number;      #CRRA
+    N::Int64;     #number of gridpoints
 end
 
 ################################################################################
 
 """
-    Input:  c:      consumption
-            agrid:  asset grid
-            coh:    cash on hand
-            r:      interest rate
-    Output: a:      new asset grid
-            Indxs:  indexes where budget constraint does not bind
-            W:      weights from interpolation
-Finds asset grid consistent with next period assets and current consumption for
-each (current) income state.
+    Input:  par:        model parameters
+            y:          income states
+            Π:          income states transition matrix
+            grd:        asset grid
+            u1:         u'(⋅)
+            u1inv:      [u'(⋅)]-¹
+            tol:        convergence criterion
+            maxiter:    maximum number of iterations
+    Output: Cpol_new:   consumption policy function after convergence
+            diff:       distance in last update of policy function
+Computes the policy function for a simple consumption-savings problem.
 """
-function interp(c::Array{Float64,2},agrid::Array{Float64,1},coh::Array{Float64,2},r::Float64)
-    m,N = size(c);
+function egm(par::params,y::Array{Float64,1},Π::Array{Float64,2},grd::Array{Float64,1},u1,u1inv,tol=1e-6,maxiter=5_000)
+    I = length(y);  #number of income states
+    N = par.N;      #number of grid points
+    β = par.β;
+    r = par.r;
+    #guesses for policy functions
+    Cpol_old = repeat(grd,1,I);   #consumption
+    #new policy functions
+    Cpol_new = zeros(N,I);
+    global ci = zeros(N);  #consumption
+    global ai =  zeros(N); #assets
 
-    a = zeros(m,N);     #current assets
-    W = zeros(m,N);     #weights
-    Indxs = zeros(m,N); #first index where LHS<=RHS
-    for i=1:m
-        LHS = c[i,:] + agrid;           #c + a
-        RHS = coh[i,:];   #(1+r)*a + y (cash on hand)
-        jindex = 1;
-        for j=1:N
-            rhsj = RHS[j];
-            #jindex first index where budget constraint holds
-            while jindex < N - 1
-                if LHS[jindex] >= rhsj
-                    break
+    dif = Inf;
+    iter = 0;
+    println("\n");
+    println("Starting EGM algorithm...");
+    while dif>tol && iter<maxiter
+        for i=1:I
+            ci = (u1inv(β*(1+r)*u1(Cpol_old)*Π[i:i,:]'))[:]; #consumption (c)
+            ai = ((ci .+ agrid .- y[i])/(1+r))[:]; #assets today (a)
+
+            #Interpolation
+            for n=1:N
+                if grd[n]<=ai[1]    #borrowing constraint binds
+                    Cpol_new[n,i] = grd[n]*(1+r) + y[i] - grd[1];
+                else                #borrowing constraint doesn't bind
+                    k= findlast(grd[n].>ai);  #first new asset smaller than grd[n]
+                    if k<N-1
+                        w = (ai[k+1]-grd[n])/(ai[k+1]-ai[k]); #weight on 1st observation
+                        Cpol_new[n,i] = w*ci[k]+(1-w)*ci[k+1];
+                    else
+                        Cpol_new[n,i] = ci[k];
+                    end
                 end
-                jindex += 1
             end
-            if jindex!==1
-                jindex_loc = jindex-1;
-            else
-                jindex_loc = 1;
-            end
-            #linear interpolation
-            w = (LHS[jindex_loc + 1] - rhsj) / (LHS[jindex_loc + 1] - LHS[jindex_loc]);  #weight for linear interpolation
-            a[i,j] = w*agrid[jindex_loc] + (1 - w)*agrid[jindex_loc+1];   #interpolation of asset point
-
-            W[i,j] = w;
-            Indxs[j] = jindex_loc;
         end
+        dif = maximum(abs.(Cpol_new.-Cpol_old)[:]);
+        if iter%10==0
+            println("Iteration #"*string(iter)*", dif = "*string(dif));
+        end
+        iter+=1;
+        Cpol_old = copy(Cpol_new); #updating policy function
     end
-    return a, Indxs, W
+    println("Ending EGM.");
+    println("\n");
+    return Cpol_new, dif;
 end
-
 
 ################################################################################
 
-"""
-    Input:  agrid:  asset grid
-            coh:    cash on hand
-            c_pol:  consumption policy function
-            r:      interest rate
-            β:      discount factor
-            Pi:     transition matrix
-            σ:      constant of risk aversion
-    Output: a:      new asset grid
-Finds asset grid consistent with next period assets and current consumption for
-each (current) income state.
-"""
-function back_iterate(agrid::Array{Float64,1},coh::Array{Float64,2},c_pol::Array{Float64,2},r::Float64,β::Float64,Pi::Array{Float64,2},σ::Float64)
-    c = (β*(1+r)*Pi*((c_pol).^(-σ))).^(-1/σ);
-    a, Indxs, W = interp(c,agrid,coh,r);
-    a[a.<agrid[1]] = agrid[1];
-    return a;
+#Plotting function
+
+function plot_fig(agrid,cpol,filename)
+    figure()
+    for i=1:size(cpol,2)
+        plot(agrid,cpol[:,i]);
+    end
+    xlim([0,30]);
+    #ylim([0,2.5]);
+    title("Consumption policy functions",fontsize=14);
+    xlabel("Savings",fontsize=13);
+    ylabel("Consumption",fontsize=13);
+    savefig(filename)
 end
