@@ -39,7 +39,7 @@ function egm(par::params,y::Array{Float64,1},Π::Array{Float64,2},grd::Array{Flo
     while dif>tol && iter<maxiter
         for i=1:I
             ci = (u1inv(β*(1+r)*u1(Cpol_old)*Π[i:i,:]'))[:]; #consumption (c)
-            ai = ((ci .+ agrid .- y[i])/(1+r))[:]; #assets today (a)
+            ai = ((ci .+ grd .- y[i])/(1+r))[:]; #assets today (a)
 
             #Interpolation
             for n=1:N
